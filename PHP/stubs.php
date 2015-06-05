@@ -139,6 +139,8 @@ function FacturarPeriodo(array $op)
                 $grupo = 'DESPACHO TERRESTRE';
                 
                 $where = 'AND t1.estado="fuera" AND codigo_agencia="'.$codigo_agencia.'" AND t1.tipo_salida="terrestre" AND t1.fechatiempo_egreso IS NOT NULL AND DATE(fechatiempo_egreso) BETWEEN "'.$periodo_inicio.'" AND "'.$periodo_final.'"';
+                $where_movimientos = 'AND t0.flag_traslado=0';
+                
                 $servicio_almacenaje = 'Almacenaje de contenedores vacios ' . $agencia . ', despachados vía terrestre durante el periodo ' .  $periodo;
                 $servicio_movimiento = 'Movimientos de contenedores vacios ' . $agencia . ', despachados vía terrestre durante el periodo ' .  $periodo;
                 break;
@@ -148,7 +150,7 @@ function FacturarPeriodo(array $op)
                 $grupo = 'DESPACHO TERRESTRE';
                 
                 $where = 'AND t1.estado="fuera" AND codigo_agencia="'.$codigo_agencia.'" AND t1.tipo_salida="terrestre" AND t1.fechatiempo_egreso IS NOT NULL AND DATE(fechatiempo_egreso) BETWEEN "'.$periodo_inicio.'" AND "'.$periodo_final.'"';
-                $where_movimientos = 'AND DATE(t0.fechatiempo) >= "'.$periodo_inicio.'"';
+                $where_movimientos = 'AND DATE(t0.fechatiempo) >= "'.$periodo_inicio.'" AND t0.flag_traslado=0';
                 $servicio_almacenaje = 'Almacenaje de contenedores vacios ' . $agencia . ', despachados vía terrestre durante el periodo ' .  $periodo;
                 $servicio_movimiento = 'Movimientos de contenedores vacios ' . $agencia . ', despachados vía terrestre durante el periodo ' .  $periodo;
                 break;
@@ -169,6 +171,7 @@ function FacturarPeriodo(array $op)
                 $periodo_final = $periodo_buque['fmax_SQL'];
     
                 $where = 'AND codigo_agencia="'.$codigo_agencia.'" AND t1.tipo_salida="embarque" AND t1.estado="fuera" AND t1.buque_egreso="'.$op['buque'].'"';
+                $where_movimientos = 'AND t0.flag_traslado=0';
                 $servicio_almacenaje = 'Almacenaje de contenedores vacios '.$agencia.' embarcados en el buque '.$op['buque'].', '.$periodo;
                 $servicio_movimiento = 'Movimientos de contenedores vacios '.$agencia.' embarcados en el buque '.$op['buque'].', '.$periodo;
                 break;
@@ -179,6 +182,7 @@ function FacturarPeriodo(array $op)
                 $grupo = 'ESTADIA';
                 $op['modo_facturacion'] = 'almacenaje';
                 $where = 'AND codigo_agencia="'.$codigo_agencia.'" AND DATE(fechatiempo_ingreso) <= "'.$periodo_final.'" AND (t1.fechatiempo_egreso IS NULL || DATE(t1.fechatiempo_egreso) > "'.$periodo_final.'")';
+                $where_movimientos = 'AND t0.flag_traslado=0';
                 $op['tipo_cobro'] = 'periodo';
                 $servicio_almacenaje = 'Estadía de contenedores no despachados '. $agencia .'';
                 $servicio_movimiento = 'Estibas de contenedores no despachados '. $agencia .'';
