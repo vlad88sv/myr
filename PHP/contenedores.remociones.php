@@ -23,6 +23,9 @@ if (mysqli_num_rows($r) > 0)
 }
 ?>
 <form id="frm_movimiento_contenedores" action="/contenedores.html?modo=remociones" method="post" autocomplete="off">
+
+<input type="hidden" value="<?php echo @$_GET['modo'] === 'remociones' ? 0 : 1 ?>" name="traslado" />
+    
 <table class="tabla-estandar opsal_tabla_ancha">
     <tbody>
         <tr><td>Cobrar a</td><td><select id="codigo_agencia" name="codigo_agencia"><?php echo $options_agencia; ?></select></td></tr>
@@ -31,6 +34,7 @@ if (mysqli_num_rows($r) > 0)
         
         <tr><td>Fecha</td><td><input type="text" class="calendariocontiempo" value="" id="fechatiempo" name="fechatiempo" /></td></tr>
 
+        <!--
         <tr><td>Doble Mov.</td><td>
         <div id="traslado" style="text-align: center;line-height: 30px;">
             <input type="radio" name="traslado" id="traslado_no" checked="checked" value="0"/>
@@ -40,7 +44,7 @@ if (mysqli_num_rows($r) > 0)
             <label for="traslado_si">Si</label>&nbsp;
         </div>
         </td></tr>
-        
+        !-->
         <tr>
             <td>Posición de contenedor</td><td>
             <table id="drop_target" class="opsal_tabla_ancha tabla-estandar tabla-centrada">

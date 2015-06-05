@@ -11,6 +11,7 @@ if (S_iniciado() && _F_usuario_cache('nivel') == 'agencia') {
     $menu[] = array('url' => '/contenedores.html','modo' => 'patio','titulo' => 'PATIO');
     $menu[] = array('url' => '/contenedores.html','modo' => 'ingreso','titulo' => 'RECEPCION');
     $menu[] = array('url' => '/contenedores.html','modo' => 'remociones','titulo' => 'REMOCION');
+    $menu[] = array('url' => '/contenedores.html','modo' => 'doble.movimiento','titulo' => 'DOBLE MOVIMIENTO');
     $menu[] = array('url' => '/contenedores.html','modo' => 'remocion.bloque','titulo' => 'REMOCION BLOQUE');
     $menu[] = array('url' => '/contenedores.html','modo' => 'salida','titulo' => 'DESPACHO');
     $menu[] = array('url' => '/contenedores.html','modo' => 'salida.bloque','titulo' => 'DESPACHO BLOQUE');
@@ -34,6 +35,7 @@ switch ($_GET['modo'])
         require_once('PHP/contenedores.ingreso.php');
         break;
     case 'remociones':
+    case 'doble.movimiento':
         require_once('PHP/contenedores.remociones.php');
         break;
     case 'remocion.bloque':
