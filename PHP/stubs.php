@@ -1013,7 +1013,7 @@ function FacturarPeriodo(array $op)
         $servicio = 'Elaboración de condiciones';
         $grupo = 'ELAB. CONDICICIONES';
         
-        $c = 'SELECT estado, codigo_contenedor, tipo_contenedor, fecha_ingreso, referencia_papel, t2.p_elaboracion_condiciones AS "subtotal" FROM `opsal_condiciones` AS t1 LEFT JOIN `opsal_tarifas` AS t2 ON t1.codigo_agencia = t2.codigo_usuario WHERE DATE(fecha_ingreso) BETWEEN "'.$periodo_inicio.'" AND "'.$periodo_final.'" AND codigo_agencia="'.$codigo_agencia.'" ORDER BY `codigo_contenedor` ASC';
+        $c = 'SELECT estado, codigo_contenedor, tipo_contenedor, fecha_ingreso, referencia_papel, num_bl, t2.p_elaboracion_condiciones AS "subtotal" FROM `opsal_condiciones` AS t1 LEFT JOIN `opsal_tarifas` AS t2 ON t1.codigo_agencia = t2.codigo_usuario WHERE DATE(fecha_ingreso) BETWEEN "'.$periodo_inicio.'" AND "'.$periodo_final.'" AND codigo_agencia="'.$codigo_agencia.'" ORDER BY `codigo_contenedor` ASC';
         $r = db_consultar($c);
         $i = 0;
         $total_siniva = 0;
@@ -1034,7 +1034,7 @@ function FacturarPeriodo(array $op)
         $b_anexo .= '</table>';
         
         $b_anexo .= '<table class="opsal_tabla_ancha tabla-estandar opsal_tabla_borde_oscuro tabla-una-linea">';
-        $b_anexo .= "<tr><th>No</th><th>Contenedor</th><th>#</th><th>Tipo</th><th>Tam</th><th>Fecha</th><th>Subtotal</th><th>IVA</th><th>Total</th></tr>";
+        $b_anexo .= "<tr><th>No</th><th>Contenedor</th><th>#</th><th>Tipo</th><th>Tamaño</th><th>BL</th><th>Fecha</th><th>Subtotal</th><th>IVA</th><th>Total</th></tr>";
         while ($f = db_fetch($r))
         {
             $b_anexo .= '<tr>';
@@ -1043,6 +1043,7 @@ function FacturarPeriodo(array $op)
             $b_anexo .= '<td>'.$f['referencia_papel'].'</td>';
             $b_anexo .= '<td>'.substr($f['tipo_contenedor'],0,2).'</td>';
             $b_anexo .= '<td>'.substr($f['tipo_contenedor'],2,4).'</td>';
+            $b_anexo .= '<td>'.$f['num_bl'].'</td>';
             $b_anexo .= '<td>'.$f['fecha_ingreso'].'</td>';
             $b_anexo .= '<td>'.dinero($f['subtotal']).'</td>';
             $b_anexo .= '<td>'.dinero($f['subtotal'] * 0.13).'</td>';
