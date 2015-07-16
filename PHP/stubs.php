@@ -416,10 +416,10 @@ function FacturarPeriodo(array $op)
         $remociones = ' COALESCE(SUM(CASE t0.motivo WHEN "remocion" THEN (1*t4.`multiplicador_remociones`) END),0) ';
         
         $valor_desestiba = 'IF( t3.cobro =20, IF (t1.tipo_salida = "terrestre", t4.`p_terrestre_desestiba_20`, t4.`p_embarque_desestiba_20`) , IF (t1.tipo_salida = "terrestre", t4.`p_terrestre_desestiba_40`, t4.`p_embarque_desestiba_40`) )';
-        $precio_desestiba = 'IF ( t0.flag_traslado = 0, '.$valor_desestiba.', ( ('.$valor_desestiba.') / 2 ) )';
+        $precio_desestiba = 'IF ( t0.flag_traslado = 0 OR doble_movimiento_precio_completo = 1, '.$valor_desestiba.', ( ('.$valor_desestiba.') / 2 ) )';
         
         $valor_estiba = 'IF( t3.cobro =20, t4.`p_estiba_20` , t4.`p_estiba_40` )';
-        $precio_estiba = 'IF ( t0.flag_traslado = 0, '.$valor_estiba.' , ( ('.$valor_estiba.') / 2 ) )';
+        $precio_estiba = 'IF ( t0.flag_traslado = 0 OR doble_movimiento_precio_completo = 1, '.$valor_estiba.' , ( ('.$valor_estiba.') / 2 ) )';
         
         $c = 'SELECT IF(tipo_salida = "terrestre", transportista_egreso, buque_egreso) AS via_egreso, DATE(`fechatiempo_ingreso`) AS "fecha_ingreso", DATE(`fechatiempo_egreso`) AS "fecha_egreso", IF (tipo_salida IS NULL, "N/A", tipo_salida) AS tipo_salida, t5.usuario AS agencia, '.$precio_desestiba.' AS "precio_desestiba", '.$precio_estiba.' AS "precio_estiba", t4.`p_remocion` AS "precio_remocion", CONCAT( x2, "-", y2, "-", t0.nivel ) AS "posicion", `codigo_contenedor`, t3.`tipo_contenedor`, '.$estibas.' AS "estibas", '.$desestibas.' AS "desestibas", '.$remociones.' AS "remociones", ('.$estibas.' + '.$desestibas.') AS "total_movimientos", ( ('.$estibas.' * COALESCE('.$precio_estiba.',0) ) + ('.$desestibas.' * COALESCE('.$precio_desestiba.',0)) ) AS "subtotal_movimientos"
         FROM `opsal_movimientos` AS t0
