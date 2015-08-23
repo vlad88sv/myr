@@ -716,3 +716,5 @@ td.pme-sortinfo, td.pme-filter { border: #004d9c 1px solid; padding: 3px; }
 td.pme-buttons { text-align: left;   }
 td.pme-message { text-align: center; }
 td.pme-stats   { text-align: right;  }
+
+table.tabla-hover tr:hover td { background: #FFFF00 !important; }

@@ -12,7 +12,7 @@ if (isset($_POST['guardar_tarifas']))
     db_reemplazar_datos('opsal_tarifas', $_POST);   
 }
 
-$c = 'SELECT `codigo_usuario`, remociones_gratis_mes, dias_libres_2040, `p_elaboracion_condiciones`, `p_almacenaje_20`, `p_almacenaje_40`, `p_estiba_20`, `p_estiba_40`, `p_embarque_desestiba_20`, `p_embarque_desestiba_40`, `p_terrestre_desestiba_20`, `p_terrestre_desestiba_40`, `p_remocion`, `p_doble_transferencia`, `multiplicador_remociones`, `remocion_como_doble_movimiento`, `la_supervisor`, `la_muellero`, `la_estibador`, `la_operador`, `la_montacarga`, `la_estiba`, `la_desestiba`, `la_combustible`, `la_transporte` FROM `opsal_tarifas` WHERE codigo_usuario = ' . $_GET['objetivo'];
+$c = 'SELECT `codigo_usuario`, remociones_gratis_mes, dias_libres_2040, `p_elaboracion_condiciones`, `p_almacenaje_20`, `p_almacenaje_40`, `p_estiba_20`, `p_estiba_40`, `p_embarque_desestiba_20`, `p_embarque_desestiba_40`, `p_terrestre_desestiba_20`, `p_terrestre_desestiba_40`, `p_remocion`, `p_doble_transferencia`, `multiplicador_remociones`, `remocion_como_doble_movimiento`, `la_supervisor`, `la_muellero`, `la_estibador`, `la_operador`, `la_montacarga`, `la_estiba`, `la_desestiba`, `la_combustible`, `la_transporte`, `doble_movimiento_precio_completo` FROM `opsal_tarifas` WHERE codigo_usuario = ' . $_GET['objetivo'];
 $r = db_consultar($c);
 $f = db_fetch($r);
 ?>
@@ -45,6 +45,7 @@ $f = db_fetch($r);
     <tr><td>la_desestiba</td><td><input name="la_desestiba" type="text" value="<?php echo $f['la_desestiba']; ?>" /></td></tr>
     <tr><td>la_combustible</td><td><input name="la_combustible" type="text" value="<?php echo $f['la_combustible']; ?>" /></td></tr>
     <tr><td>la_transporte</td><td><input name="la_transporte" type="text" value="<?php echo $f['la_transporte']; ?>" /></td></tr>
+    <tr><td>doble_movimiento_precio_completo</td><td><input name="doble_movimiento_precio_completo" type="text" value="<?php echo $f['doble_movimiento_precio_completo']; ?>" /> | 1 significa cobrar doble movimiento al 100%, 0 significa cobrarlo al 50%. Precios respecto a p_estiba/p_desestiba </td></tr>
     </table>
 
 <input type="submit" name="guardar_tarifas" value="Guardar" />
