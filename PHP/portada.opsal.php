@@ -10,7 +10,7 @@ $resultado = db_consultar($c);
 echo '<div class="exportable" rel="Contenedores con atención al '.date('Y-m-d Hi').'">';
 echo '<table class="tabla-estandar opsal_tabla_ancha opsal_tabla_borde_oscuro">';
 echo '<tr><th>Naviera</th><th>Contenedor</th><th>Tipo</th><th>Clase</th><th>Posición</th><th>Recepción</th><th><acronym title="Días en patio">DEP</acronym></th><th>Exp. ARIVU</th><th><acronym title="Días para expiración de ARIVU">DPEA</acronym></th><th style="width:500px;">Observaciones</th></tr>';
-while ($f = mysqli_fetch_assoc($resultado))
+while ($resultado && $f = mysqli_fetch_assoc($resultado))
 {
     echo '<tr>';
     echo '<td>'.$f['naviera'].'</td>';
