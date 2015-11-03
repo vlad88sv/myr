@@ -309,7 +309,7 @@ while ($f = db_fetch($r))
                 return false;
             }
             
-	    $("#ejecutar_salida").attr('disabled','disabled').css('color','white').after('<div style="color:red;text-align:center;font-size: 1.2em;margin:5px">Procesando...</div>');
+	    $("#ejecutar_salida").css('color','white').after('<div style="color:red;text-align:center;font-size: 1.2em;margin:5px">Procesando...</div>');
         });
     });
 </script>
