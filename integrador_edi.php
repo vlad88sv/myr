@@ -92,4 +92,6 @@ if ($EDI['metodo'] == 'ftp') {
     
     // cerrar la conexión ftp 
     ftp_close($conn_id);
+    
+    oedi_estado($codigo_orden_edi, 1, "EDI file succesfully processed and stored in remote FTP.");
 }
