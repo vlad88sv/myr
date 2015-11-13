@@ -30,6 +30,7 @@ function db_consultar($consulta){
     if ( mysqli_error($db_link) ) {
         error_log ('MySQL.Error:' . mysqli_error($db_link));
         error_log ('MySQL.Query: ' . $consulta) ;
+        error_log(serialize(debug_backtrace));
     }
     $db_contador++;
     return $resultado;
