@@ -1319,6 +1319,8 @@ function SEO($URL){
 // http://www.webcheatsheet.com/PHP/get_current_page_url.php
 // Obtiene la URL actual, $stripArgs determina si eliminar la parte dinamica de la URL
 function curPageURL($stripArgs=false,$friendly=false,$forzar_ssl=false) {
+if (php_sapi_name() === 'cli') return 'CLI';
+
 $pageURL = '';
 if (!$friendly)
 {
