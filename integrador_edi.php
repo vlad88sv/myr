@@ -14,7 +14,7 @@ require_once (__PHPDIR__ . "vital.php");
 
 function oedi_estado($codigo_orden_edi, $estado, $log) {
     $DATOS_OEDI['estado'] = $estado;
-    $codigo_orden_edi = db_actualizar_datos('opsal_ordenes_edi', $DATOS, "codigo_orden_edi = '{$codigo_orden_edi}'");
+    db_actualizar_datos('opsal_ordenes_edi', $DATOS_OEDI, "codigo_orden_edi = '{$codigo_orden_edi}'");
     edi_log($codigo_orden_edi, $log);
 }
 
