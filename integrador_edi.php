@@ -23,6 +23,7 @@ $c = 'SELECT codigo_orden_edi, codigo_orden, codigo_movimiento, fechatiempo, edi
 $r = db_consultar($c);
 
 if (mysqli_num_rows($r) == 0) {
+    echo 'Nada que integrar, terminando.'.PHP_EOL;
     return false;
 }
 
