@@ -149,7 +149,7 @@ function crear_EDI($codigo_orden) {
     $DATOS_OEDI['fechatiempo'] = mysql_datetime();
     $DATOS_OEDI['edi_raw'] = $EDI_RAW;
     $DATOS_OEDI['estado'] = $EDI_ESTADO;
-    $codigo_orden_edi = db_agregar_datos('opsal_ordenes_edi', $DATOS);
+    $codigo_orden_edi = db_agregar_datos('opsal_ordenes_edi', $DATOS_OEDI);
 
     if ( $EDI_ESTADO === 0 ) {
         edi_log($codigo_orden_edi, 'EDI file added to the queue.');
