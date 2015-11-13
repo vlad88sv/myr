@@ -1303,6 +1303,8 @@ function validcorreo($correo)
 
 function ES_SSL()
 {
+    if (php_sapi_name() === 'cli') return false;
+    
     return ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443);
 }
 
