@@ -2,9 +2,9 @@
 if (empty($_GET['modo']))
     $_GET['modo'] = 'agencias';
 
-$menu[] = array('url' => '/administracion.html', 'modo' => 'patio'   , 'titulo' => 'PATIO');
-$menu[] = array('url' => '/administracion.html', 'modo' => 'agencias', 'titulo' => 'AGENCIAS');
-$menu[] = array('url' => '/administracion.html', 'modo' => 'usuarios', 'titulo' => 'USUARIOS');
+$menu[] = array('url' => PROY_URL . 'administracion.html', 'modo' => 'patio'   , 'titulo' => 'PATIO');
+$menu[] = array('url' => PROY_URL . 'administracion.html', 'modo' => 'agencias', 'titulo' => 'AGENCIAS');
+$menu[] = array('url' => PROY_URL . 'administracion.html', 'modo' => 'usuarios', 'titulo' => 'USUARIOS');
 
 echo '<div style="border-bottom: 1px solid #7A7A7A;">';
 foreach ($menu AS $id => $datos)

@@ -136,7 +136,7 @@ while ($f = db_fetch($r)) $tagsCheque[] = $f['cheque'];
                 return false;
             }
             
-            $("#indicador_de_envio").html('<img src="/IMG/general/cargando.gif" />');
+            $("#indicador_de_envio").html('<img src="<?php echo PROY_URL ?>IMG/general/cargando.gif" />');
             
             $("#guardar").attr('disabled','disabled');
             

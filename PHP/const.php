@@ -1,7 +1,7 @@
 <?php
 // Proyecto
-define('PROY_URL_NOPROTOCOL',$_SERVER['HTTP_HOST'].'/');
 
+define('PROY_URL_NOPROTOCOL', 'localhost/codigo/ocy.opsal.net/');
 define('PROY_URL_ESTATICA','http://'.PROY_URL_NOPROTOCOL);
 define('PROY_URL','http://'.PROY_URL_NOPROTOCOL);    
 

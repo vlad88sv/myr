@@ -40,7 +40,7 @@ function crear_EDI($codigo_orden) {
     $EDI_ESTADO = 0;
     $EDI_RAW = '';
 
-    $c = 'SELECT `codigo_orden`, `codigo_contenedor`, `tipo_contenedor`, `ISO`, `codigo_agencia`, `codigo_posicion`, `nivel`, `clase`, `tara`, `chasis`, `chasis_egreso`, `transportista_ingreso`, `transportista_egreso`, `buque_ingreso`, `buque_egreso`, `cheque_ingreso`, `cheque_egreso`, `cepa_salida`, `arivu_ingreso`, `arivu_referencia`, `observaciones_egreso`, `observaciones_ingreso`, `destino`, `estado`, `fechatiempo_ingreso`, `fechatiempo_egreso`, `ingresado_por`, `egresado_por`, `sucio`, `tipo_salida`, `eir_ingreso`, `eir_egreso`, `ingreso_con_danos`, `cliente_ingreso`, `chofer_ingreso`, `chofer_egreso`, `booking_number`, `booking_number_ingreso` FROM `opsal_ordenes` LEFT JOIN `opsal_tipo_contenedores` USING (tipo_contenedor) WHERE `codigo_orden` = "' . $codigo_orden . '"';
+    $c = 'SELECT `codigo_orden`, `codigo_contenedor`, `tipo_contenedor`, `ISO`, `codigo_agencia`, `codigo_posicion`, `nivel`, `clase`, `tara`, `chasis`, `chasis_egreso`, `transportista_ingreso`, `transportista_egreso`, `buque_ingreso`, `buque_egreso`, `cheque_ingreso`, `cheque_egreso`, `cepa_salida`, `arivu_ingreso`, `arivu_referencia`, `observaciones_egreso`, `observaciones_ingreso`, `destino`, `estado`, `fechatiempo_ingreso`, `fechatiempo_egreso`, `ingresado_por`, `egresado_por`, `sucio`, `tipo_salida`, `eir_ingreso`, `eir_egreso`, `ingreso_con_danos`, `cliente_ingreso`, `chofer_ingreso`, `chofer_egreso`, `booking_number`, `booking_number_ingreso`, `ingreso_marchamo`, `egreso_marchamo` FROM `opsal_ordenes` LEFT JOIN `opsal_tipo_contenedores` USING (tipo_contenedor) WHERE `codigo_orden` = "' . $codigo_orden . '"';
     $r = db_consultar($c);
 
     if (mysqli_num_rows($r) == 0) {
@@ -144,6 +144,7 @@ function crear_EDI($codigo_orden) {
     }
 
     // Guardamos la orden de trabajo EDI
+    $DATOS_OEDI = array();
     $DATOS_OEDI['codigo_orden'] = $codigo_orden;
     $DATOS_OEDI['codigo_movimiento'] = $MOVIMIENTO['ID_movimiento'];
     $DATOS_OEDI['fechatiempo'] = mysql_datetime();

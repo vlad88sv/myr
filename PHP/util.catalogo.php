@@ -85,24 +85,32 @@ $opts['fdd']['facturacion'] = array(
                   "hora"),
   'sort'     => true
 );
+
+/*
 $opts['fdd']['costo_bajo'] = array(
   'name'     => 'Costo 1',
   'select'   => 'T',
   'maxlen'   => 8,
   'sort'     => true
 );
+ */
+
 $opts['fdd']['costo_medio'] = array(
-  'name'     => 'Costo 2',
+  'name'     => 'Costo',
   'select'   => 'T',
   'maxlen'   => 8,
   'sort'     => true
 );
+
+/*
 $opts['fdd']['costo_alto'] = array(
   'name'     => 'Costo 3',
   'select'   => 'T',
   'maxlen'   => 8,
   'sort'     => true
 );
+ */
+ 
 $opts['fdd']['tipo'] = array(
   'name'     => 'Tipo',
   'select'   => 'T',

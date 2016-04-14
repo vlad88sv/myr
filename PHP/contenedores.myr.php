@@ -2,11 +2,11 @@
 if (empty($_GET['modo']))
     $_GET['modo'] = 'patio';
 
-$menu[] = array('url' => '/contenedores.html','modo' => 'patio','titulo' => 'PATIO');
-$menu[] = array('url' => '/contenedores.html','modo' => 'ingreso','titulo' => 'RECEPCION');
-$menu[] = array('url' => '/contenedores.html','modo' => 'remociones','titulo' => 'REMOCION');
+$menu[] = array('url' => PROY_URL . 'contenedores.html','modo' => 'patio','titulo' => 'PATIO');
+$menu[] = array('url' => PROY_URL . 'contenedores.html','modo' => 'ingreso','titulo' => 'RECEPCION');
+$menu[] = array('url' => PROY_URL . 'contenedores.html','modo' => 'remociones','titulo' => 'REMOCION');
 //$menu[] = array('url' => '/contenedores.html','modo' => 'remocion.bloque','titulo' => 'REMOCION BLOQUE');
-$menu[] = array('url' => '/contenedores.html','modo' => 'salida','titulo' => 'DESPACHO');
+$menu[] = array('url' => PROY_URL . 'contenedores.html','modo' => 'salida','titulo' => 'DESPACHO');
 //$menu[] = array('url' => '/contenedores.html','modo' => 'salida.bloque','titulo' => 'DESPACHO BLOQUE');
 
 foreach ($menu AS $id => $datos)
@@ -130,7 +130,7 @@ switch ($_GET['modo'])
     // Iniciemos el mapa
     function iniciar_mapa(opciones) {
         var html = '<p style="color:black;font-size:1.1em;">Actualizando mapa...</p><br />';
-        html += '<img src="/IMG/general/cargando.gif" />';
+        html += '<img src="<?php echo PROY_URL ?>IMG/general/cargando.gif" />';
 
         $('#contenedor_mapa').html(html);
         opciones = typeof opciones !== 'undefined' ? opciones : {};
@@ -194,7 +194,7 @@ switch ($_GET['modo'])
            }, event);
         });
         
-        $('#actualizar_mapa').click(function(){ iniciar_mapa(); });
+        $('#actualizar_mapa').click(function(){ iniciar_mapa({codigo_patio: $("#codigo_patio").val()}); });
         
         $('#opsal_mapa #contenedor_mapa table td').live('contextmenu',function(event){
             event.preventDefault();

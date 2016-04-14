@@ -85,7 +85,7 @@
     <div style="position: relative;float:left;width:732px;">
         <div id="contenedor_mapa" style="height:705px;text-align:center;">
                 <p>Cargando mapa...</p><br />
-                <img src="/IMG/general/cargando.gif" />
+                <img src="<?php echo PROY_URL ?>IMG/general/cargando.gif" />
         </div>
         <div id="contenedor_visual" style="position:absolute;background-color:#00FAFF;z-index:99;"></div>
     </div>

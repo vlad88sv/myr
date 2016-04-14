@@ -2,7 +2,7 @@
 <script type="text/javascript">
   google.load('visualization', '1', {packages: ['corechart']});
 </script>
-<h1 class="opsal_titulo"><?php echo _('OPSAL - Contenedores en patio') . ' - ' . _F_usuario_cache('usuario'); ?></h1>
+<h1 class="opsal_titulo"><?php echo PROY_NOMBRE . _(' - Contenedores en patio') . ' - ' . _F_usuario_cache('usuario'); ?></h1>
 <p><?php echo _('Detalle de sus contenedores en patio'); ?> </p>
 <p><?php echo _('Columnas en rojo marcan contenedores con atención, figurán en esta categoría aquellos que tengan menos de 30 días restantes de ARIVU o aquellos con mas de 60 días en patio.'); ?></p>
 <?php

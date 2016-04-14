@@ -10,7 +10,7 @@ if (MEMCACHE_ACTIVO) {
 
 function db_conectar(){
     global $db_link;
-    $db_link = @mysqli_connect(db__host, db__usuario, db__clave, db__db) or die("Fue imposible conectarse a la base de datos.<br /><hr />Detalles del error:<pre>" . mysqli_error($db_link) . "</pre>");
+    $db_link = @mysqli_connect(db__host, db__usuario, db__clave, db__db) or die("Fue imposible conectarse a la base de datos.<br /><hr />Detalles del error:<pre>" . mysqli_connect_error() . "</pre>");
 }
 
 function db_obtener_link_legado(){
@@ -30,7 +30,7 @@ function db_consultar($consulta){
     if ( mysqli_error($db_link) ) {
         error_log ('MySQL.Error:' . mysqli_error($db_link));
         error_log ('MySQL.Query: ' . $consulta) ;
-        error_log(serialize(debug_backtrace));
+        error_log(serialize(debug_backtrace()));
     }
     $db_contador++;
     return $resultado;

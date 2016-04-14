@@ -233,7 +233,7 @@ while ($f = db_fetch($r)) $tagsChofer[] = $f['chofer_egreso'];
                 return false;
             }
             
-            $("#indicador_de_envio").html('<img src="/IMG/general/cargando.gif" />');
+            $("#indicador_de_envio").html('<img src="<?php echo PROY_URL ?>IMG/general/cargando.gif" />');
             
             $("#realizar_salida").attr('disabled','disabled');
             

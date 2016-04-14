@@ -1,4 +1,4 @@
-<h1 class="opsal_titulo">OPSAL - Contenedores con atención</h1>
+<h1 class="opsal_titulo">Contenedores con atención</h1>
 <p>Catalogan como contenedores con atención aquellos que tengan menos de 30 días restantes de ARIVU o aquellos con mas de 60 días en patio.</p>
 <?php
 $agencia = (!empty($_GET['codigo_agencia']) ? ' AND codigo_agencia="'.$_GET['codigo_agencia'] .'"' : '');

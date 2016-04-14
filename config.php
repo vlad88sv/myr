@@ -3,9 +3,12 @@ $bench_ultimo_evento = 'Big Bang';
 $bench_referencia = microtime(true);
 define('MODO_OCY','OCY');
 define('MODO_MYR','MYR');
-switch (@$_SERVER["SERVER_NAME"])
+define('_CLIENT_','MYR');
+
+switch (_CLIENT_)
 {
-    case 'sistemamyr.tk':
+    case 'MYR':
+        define('IMG_CABECERA','cabecera_myr.png');
         define('MODO','MYR');
         define('NOMBRE_CORTO','M&R');
         define('PROY_EMPRESA','MANTENIMIENTO Y REPARACIÓN, S.A. DE C.V.');
@@ -15,8 +18,9 @@ switch (@$_SERVER["SERVER_NAME"])
         define('PROY_TELEFONO_PRINCIPAL','22XX-XXXX');
         break;
     
-    case 'ocy.opsal.net':
+    case 'OPSAL':
     default:
+        define('IMG_CABECERA','cabecera.jpg');
         define('MODO','OCY');
         define('NOMBRE_CORTO','OCY');
         define('PROY_EMPRESA','OPERADORES PORTUARIOS SALVADOREÑOS, S.A. DE C.V.');
@@ -32,7 +36,7 @@ define('__PHPDIR__',__BASE__.'PHP/');
 define('_B_FORZAR_SERVIDOR_IMG_NULO','true');
 define('db__host','localhost');
 define('db__usuario','root');
-define('db__clave','Eyobayeyo123!');
+define('db__clave','');
 define('db__db','opsal');
 define('smtp_usuario','reports+opsal.net');
 define('smtp_clave','R3p0rt52k12');
@@ -48,7 +52,7 @@ define('HEAD_KEYWORDS','Contenedores El Salvador, Marchamos El Salvador, Condici
 $GLOBAL_MOSTRAR_PIE = true;
 $GLOBAL_TIDY_BREAKS = false;
 $HEAD_titulo = PROY_NOMBRE;
-$HEAD_descripcion = 'OPSAL Container Yard - '.PROY_TELEFONO_PRINCIPAL;
+$HEAD_descripcion = 'MYR - '.PROY_TELEFONO_PRINCIPAL;
 // Prefijo para tablas
 define('db_prefijo','opsal_');
 ?>
